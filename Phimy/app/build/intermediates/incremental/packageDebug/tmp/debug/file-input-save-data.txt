@@ -1,7 +1,0 @@
-#Internal package file, do not edit.
-#Mon Dec 10 16:31:32 ART 2018
-0.baseType=DIRECTORY
-0.base=C\:\\Users\\DH\\Desktop\\cautious-garbanzo\\Phimy\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
-0.path=classes.dex
-0.set=DEX
-count=1
