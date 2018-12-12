@@ -23,7 +23,6 @@ import java.util.ArrayList;
 public class DetalleFragment extends Fragment {
 
     public static final String KEY_MOVIEDBFR="movieDB";
-    public static final String KEY_ACTOR = "actores";
 
 
     public DetalleFragment() {
@@ -32,7 +31,6 @@ public class DetalleFragment extends Fragment {
 
     public static DetalleFragment fabrica(MovieDB movieDB){
         DetalleFragment fragment = new DetalleFragment();
-        ArrayList<Cast> actor = new ArrayList<>();
         MovieDB dato = movieDB;
 
         Bundle bundle = new Bundle();
@@ -65,8 +63,8 @@ public class DetalleFragment extends Fragment {
         ImageView trailerView = view.findViewById(R.id.imagenVideo);
 
         tituloView.setText(movieDB.getTitle());
-        //String path = movieDB.getPoster_path();
-        Glide.with(this).load("http://image.tmdb.org/t/p/w185/"+movieDB.getPoster_path()).into(trailerView);
+        String path = movieDB.getPoster_path();
+        Glide.with(this).load(path).into(trailerView);
 
         //generoView.setText(movieDB.getOverview());
         //duracionView.setText(movieDB.getRuntime());

@@ -1,5 +1,7 @@
 package com.phimy.dao;
 
+import com.phimy.model.Cast;
+import com.phimy.model.CastDBContainer;
 import com.phimy.model.MovieDB;
 import com.phimy.model.MovieDBContainer;
 
@@ -13,9 +15,9 @@ import retrofit2.Response;
 
 public class MovieDBDao extends DaoHelper {
     private ServiceMoviesDB serviceMovies;
-    private String api_key="5aa2e212bfa0373c59c3494bb068827f";
+    private String api_key = "5aa2e212bfa0373c59c3494bb068827f";
     Call<MovieDBContainer> call;
-    List<MovieDB> favoritosMovieDBS=new ArrayList<MovieDB>();
+    List<MovieDB> favoritosMovieDBS = new ArrayList<MovieDB>();
 
     public MovieDBDao() {
         super("https://api.themoviedb.org/3/");
@@ -26,20 +28,20 @@ public class MovieDBDao extends DaoHelper {
         return favoritosMovieDBS;
     }
 
-    public void getMovies(final ResultListener<List<MovieDB>> listenerDelController, Integer search){
+    public void getMovies(final ResultListener<List<MovieDB>> listenerDelController, Integer search) {
 
-        switch(search) {
-            case 0 :
+        switch (search) {
+            case 0:
                 this.call = serviceMovies.getPopularMovies(api_key);
                 break; // optional
-            case 1 :
+            case 1:
                 this.call = serviceMovies.getPopularTv(api_key);
                 break; // optional
-            case 2 :
+            case 2:
                 this.call = serviceMovies.getNowPlaying(api_key);
                 break; // optional
-                // You can have any number of case statements.
-            default : // Optional
+            // You can have any number of case statements.
+            default: // Optional
                 this.call = serviceMovies.getPopularMovies(api_key);
                 break;
         }
@@ -50,26 +52,47 @@ public class MovieDBDao extends DaoHelper {
                 List<MovieDB> movies = movieContainer.getMisMovies();
                 listenerDelController.finish(movies);
             }
+
             @Override
             public void onFailure(Call<MovieDBContainer> call, Throwable t) {
-                String i= "hola";
+                String i = "hola";
             }
         });
     }
 
-    public void getFavoritos(final ResultListener<List<MovieDB>> listenerDelController){
+    //TRAER CAST START
+    public void getCast(final ResultListener<List<Cast>> castListener, Integer id) {
+        retrofit2.Call<CastDBContainer> castDBContainerCall = serviceMovies.getCast(id, api_key);
+        castDBContainerCall.enqueue(new Callback<CastDBContainer>() {
+            @Override
+            public void onResponse(retrofit2.Call<CastDBContainer> call, Response<CastDBContainer> response) {
+                CastDBContainer castContainer = response.body();
+                List<Cast> castList = castContainer.getFullCast();
+                castListener.finish(castList);
+            }
+
+            @Override
+            public void onFailure(retrofit2.Call<CastDBContainer> call, Throwable t) {
+
+            }
+        });
+    }
+
+    //TRAER CAST END
+
+    public void getFavoritos(final ResultListener<List<MovieDB>> listenerDelController) {
         listenerDelController.finish(favoritosMovieDBS);
     }
 
-    public void addFavoritos(MovieDB movieDB){
+    public void addFavoritos(MovieDB movieDB) {
         if (!favoritosMovieDBS.contains(movieDB)) {
             favoritosMovieDBS.add(movieDB);
         }
     }
 
-    public void removeFavoritos(MovieDB movieDB){
+    public void removeFavoritos(MovieDB movieDB) {
         int index = favoritosMovieDBS.indexOf(movieDB);
-        if( index != -1 ){
+        if (index != -1) {
             // Remove the item and store it in a variable
             favoritosMovieDBS.remove(index);
         }
