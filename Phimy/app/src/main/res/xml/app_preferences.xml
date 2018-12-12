@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.preference.PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <android.support.v7.preference.PreferenceCategory
+        android:title="Hola hola">
+
+        <android.support.v7.preference.SwitchPreferenceCompat
+            android:defaultValue="true"
+            android:key="@string/pref_pref1"
+            android:summary="switch_summ"
+            android:title="switch_preference"/>
+
+        <android.support.v7.preference.EditTextPreference
+            android:defaultValue="edittext_default"
+            android:dialogLayout="@layout/pref_dialog_edittext_fix"
+            android:dialogMessage="dialog_message"
+            android:inputType="number"
+            android:key="@string/pref_pref2"
+            android:summary="edittext_summ"
+            android:title="edittext_title"/>
+
+        <android.support.v7.preference.CheckBoxPreference
+            android:defaultValue="true"
+            android:key="@string/pref_pref3"
+            android:summary="checkbox_summ"
+            android:title="checkbox_title"/>
+
+    </android.support.v7.preference.PreferenceCategory>
+
+    <android.support.v7.preference.PreferenceCategory
+        android:title="category_two">
+
+        <com.phimy.view.TimePreference
+            style="@style/AppPreference.DialogPreference"
+            android:defaultValue="90"
+            android:key="@string/pref_pref4"
+            android:summary="time_summ"
+            android:title="time_title"/>
+
+    </android.support.v7.preference.PreferenceCategory>
+
+    <android.support.v7.preference.PreferenceCategory
+        android:title="category_three">
+
+        <ListPreference
+            android:dialogTitle="Select columnas"
+            android:entries="@array/settings_columns"
+            android:entryValues="@array/settings_columns_values"
+            android:key="columnas"
+            android:summary="Click to show a list to choose from"
+            android:title="List Preference"
+            android:defaultValue="2"/>
+
+    </android.support.v7.preference.PreferenceCategory>
+
+</android.support.v7.preference.PreferenceScreen>

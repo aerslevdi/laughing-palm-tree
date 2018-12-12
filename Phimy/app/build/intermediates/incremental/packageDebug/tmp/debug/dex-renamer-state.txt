@@ -1,0 +1,4 @@
+#Mon Dec 10 16:31:32 ART 2018
+base.0=C\:\\Users\\DH\\Desktop\\cautious-garbanzo\\Phimy\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+path.0=classes.dex
+renamed.0=classes.dex
