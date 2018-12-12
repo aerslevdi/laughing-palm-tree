@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/item_login"
+        android:title="Login"
+        android:icon="@drawable/ic_videocam_black_24dp"/>
+
+    <item
+        android:id="@+id/item_Favoritos"
+        android:title="Favoritos"
+        android:icon="@drawable/favoritered"/>
+
+    <item
+        android:id="@+id/item_about"
+        android:title="About Us"
+        android:icon="@drawable/ic_face_black_24dp"/>
+</menu>

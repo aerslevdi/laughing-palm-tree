@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Phimy</string>
+
+    <string name="movie_title">LOVE MOVIES</string>
+    <string name="movie_subtitle">Esta temporada top 20 movies</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_preference">PreferenceActivity</string>
+    <string name="title_activity_phimy_preference">PhimyPreferenceActivity</string>
+    <string name="pref_sync">Música</string>
+    <string name="pref_sync_summ">rock</string>
+    <string name="pref_syncConnectionType">hip hop</string>
+    <string name="pref_syncConnectionTypes_default">rap</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <color name="background">#FF0000 </color>
+</resources>

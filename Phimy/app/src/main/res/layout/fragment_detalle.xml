@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <android.support.design.widget.CoordinatorLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:fitsSystemWindows="true">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+                <ImageView
+                    android:id="@+id/imagenVideo"
+                    android:layout_width="match_parent"
+                    android:layout_height="450dp"
+                    android:scaleType="centerCrop" />
+
+                <TextView
+                    android:id="@+id/tituloPelicula"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="250dp"
+                    android:textColor="#000000"
+                    android:textSize="30sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:id="@+id/genero"
+                    android:layout_below="@id/tituloPelicula"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:id="@+id/duracion"
+                    android:layout_toRightOf="@id/genero"
+                    android:layout_below="@id/tituloPelicula"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/fecha"
+                    android:layout_toRightOf="@id/duracion"
+                    android:layout_below="@id/tituloPelicula"
+                    android:textSize="15sp" />
+
+                <ImageView
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/scoreImg"
+                    android:layout_marginTop="15dp"
+                    android:layout_below="@id/genero"
+                    android:src="@drawable/com_facebook_profile_picture_blank_square" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/scoreNumero"
+                    android:layout_alignRight="@id/scoreImg"
+                    android:layout_alignLeft="@id/scoreImg"
+                    android:textAlignment="center"
+                    android:text="8/10"
+                    android:layout_below="@id/scoreImg"/>
+
+                <ImageView
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/metaImg"
+                    android:layout_marginTop="15dp"
+                    android:layout_toRightOf="@id/scoreImg"
+                    android:layout_below="@id/duracion"
+                    android:src="@drawable/ic_tv_black_24dp" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/scoreMeta"
+                    android:layout_alignRight="@id/metaImg"
+                    android:layout_alignLeft="@id/metaImg"
+                    android:textAlignment="center"
+                    android:text="68"
+                    android:layout_below="@id/scoreImg"/>
+
+                <ImageView
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/premiosImg"
+                    android:layout_marginTop="15dp"
+                    android:layout_below="@id/fecha"
+                    android:layout_toRightOf="@id/metaImg"
+                    android:src="@drawable/ic_directions_run_black_24dp" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/premiosNumero"
+                    android:layout_alignRight="@id/premiosImg"
+                    android:layout_alignLeft="@id/premiosImg"
+                    android:textAlignment="center"
+                    android:text="8/10"
+                    android:layout_below="@id/scoreImg"/>
+            </RelativeLayout>
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?android:attr/actionBarSize"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                >
+
+            </android.support.v7.widget.Toolbar>
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/actoresRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginTop="450dp"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        </android.support.v7.widget.RecyclerView>
+
+
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fabButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#eadf05"
+            android:src="@drawable/ic_launcher_background"
+            app:fabSize="normal"
+            app:layout_anchor="@id/imagenVideo"
+            app:layout_anchorGravity="right|bottom" />
+
+    </android.support.design.widget.CoordinatorLayout>
