@@ -6,7 +6,7 @@ import java.util.List;
 
 
 public class MovieDBContainer {
-    // TODO Completar la clase
+
     @SerializedName("results")
     private List<MovieDB> misMovies;
 
