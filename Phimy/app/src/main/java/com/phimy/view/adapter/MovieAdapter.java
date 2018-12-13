@@ -109,7 +109,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
                 @Override
                 public void onClick(View view) {
                     MovieDB movieDB = movieList.get(getAdapterPosition());
-                    receptor.recibir(movieDB);
+                    receptor.recibir(movieDB, getAdapterPosition(), "nameFrag");
                 }
             });
         }
@@ -146,7 +146,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
     }
 
     public interface Receptor{
-        void recibir(MovieDB movieDB);
+        void recibir(MovieDB movieDB, Integer pos, String nameFrag);
     }
 
     @Override

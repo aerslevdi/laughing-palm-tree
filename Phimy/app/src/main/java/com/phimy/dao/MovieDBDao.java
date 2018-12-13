@@ -17,12 +17,13 @@ import retrofit2.Response;
 
 public class MovieDBDao extends DaoHelper {
     private ServiceMoviesDB serviceMovies;
+    public static final String BASE_URL =  "https://api.themoviedb.org/3/";
     private String api_key = "5aa2e212bfa0373c59c3494bb068827f";
     Call<MovieDBContainer> call;
     List<MovieDB> favoritosMovieDBS = new ArrayList<MovieDB>();
 
     public MovieDBDao() {
-        super("https://api.themoviedb.org/3/");
+        super(BASE_URL);
         serviceMovies = retrofit.create(ServiceMoviesDB.class);
     }
 
@@ -61,7 +62,6 @@ public class MovieDBDao extends DaoHelper {
             }
         });
     }
-
     //TRAER CAST START
     public void getCast(final ResultListener<List<Cast>> castListener, Integer id) {
         retrofit2.Call<CastDBContainer> castDBContainerCall = serviceMovies.getCast(id, api_key);

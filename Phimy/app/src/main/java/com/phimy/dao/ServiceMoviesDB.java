@@ -19,9 +19,9 @@ public interface ServiceMoviesDB {
     @GET("tv/popular")
     Call<MovieDBContainer> getPopularTv(@Query("api_key") String apiKey);
 
-    @GET("/movie/{movie_id}/videos")
+    @GET("movie/{movie_id}/videos")
     Call<VideoDB>getVideo(@Path("movie_id") Integer movie_id, @Query("api_key") String api_key);
 
-    @GET("/movie/{movie_id}/credits")
+    @GET("movie/{movie_id}/credits")
     Call<CastDBContainer>getCast(@Path("movie_id") Integer movie_id, @Query("api_key") String api_key);
 }

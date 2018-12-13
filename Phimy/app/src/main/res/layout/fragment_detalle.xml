@@ -35,12 +35,6 @@
                     android:fitsSystemWindows="true"
                     android:orientation="horizontal">
 
-                    <com.google.android.youtube.player.YouTubePlayerView
-                        android:id="@+id/youtube_view"
-                        android:layout_width="match_parent"
-                        android:layout_height="250dp"
-                        android:fitsSystemWindows="true" />
-
                     <ImageView
                         android:id="@+id/imagenVideo"
                         android:fitsSystemWindows="true"
@@ -65,7 +59,7 @@
                     android:layout_below="@id/linearBar">
 
                     <TextView
-                        android:id="@+id/genero"
+                        android:id="@+id/trailerButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="8dp"
@@ -76,7 +70,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="8dp"
-                        android:layout_toRightOf="@id/genero"
+                        android:layout_toRightOf="@id/trailerButton"
                         android:textSize="15sp" />
 
                     <TextView
@@ -90,7 +84,7 @@
                         android:id="@+id/scoreImg"
                         android:layout_width="130dp"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/genero"
+                        android:layout_below="@id/trailerButton"
                         android:layout_marginTop="15dp"
                         android:src="@drawable/ic_star_border_black_24dp" />
 

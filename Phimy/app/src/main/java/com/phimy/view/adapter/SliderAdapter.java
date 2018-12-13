@@ -1,9 +1,11 @@
 package com.phimy.view.adapter;
 
+
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import com.phimy.model.Cast;
 import com.phimy.model.MovieDB;
 import com.phimy.view.fragment.DetalleFragment;
 
@@ -11,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SliderAdapter extends FragmentStatePagerAdapter {
+
     private List<Fragment> fragments = new ArrayList<>();
 
     private List<MovieDB> datos;
@@ -18,10 +21,10 @@ public class SliderAdapter extends FragmentStatePagerAdapter {
     public SliderAdapter(FragmentManager fm, List<MovieDB> datos) {
         super(fm);
         this.datos = datos;
-        for (MovieDB movieDB : datos){
+       /* for (MovieDB movieDB : datos){
             DetalleFragment detalleView = DetalleFragment.fabrica(movieDB);
             fragments.add(detalleView);
-        }
+        }*/
     }
 
     @Override
@@ -33,4 +36,14 @@ public class SliderAdapter extends FragmentStatePagerAdapter {
     public int getCount() {
         return this.fragments.size();
     }
+
+    public void setDatos(List<MovieDB> datos) {
+        this.datos = datos;
+        for (MovieDB movieDB : datos){
+            DetalleFragment detalleView = DetalleFragment.fabrica(movieDB);
+            fragments.add(detalleView);
+        }
+        notifyDataSetChanged();
+    }
+
 }

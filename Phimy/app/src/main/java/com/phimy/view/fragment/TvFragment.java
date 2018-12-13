@@ -88,10 +88,12 @@ public class TvFragment extends Fragment implements MovieAdapter.Receptor {
 
 
     @Override
-    public void recibir(MovieDB movieDB) {
+    public void recibir(MovieDB movieDB, Integer pos, String nameFrag) {
         Intent intent=new Intent(this.getActivity(), MovieDetalleActivity.class );
         Bundle bundle= new Bundle();
         bundle.putSerializable(MovieDetalleActivity.KEY_MOVIEDB, movieDB);
+        bundle.putInt(MovieDetalleActivity.KEY_POS, pos);
+        bundle.putString(MovieDetalleActivity.KEY_NAMEFRAG, "TvFragment");
         intent.putExtras(bundle);
         startActivity(intent);
     }

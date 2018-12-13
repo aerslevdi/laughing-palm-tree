@@ -12,6 +12,8 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.phimy.R;
 import com.phimy.model.Cast;
+import com.phimy.model.MovieDB;
+import com.phimy.view.fragment.DetalleFragment;
 
 import java.util.List;
 
@@ -62,6 +64,7 @@ public class DetalleAdapter extends RecyclerView.Adapter<DetalleAdapter.DetalleA
 
 
         }
+
         public void cargar (Cast cast){
             nombreActor.setText(cast.getName());
 

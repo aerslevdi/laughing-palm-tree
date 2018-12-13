@@ -1,9 +1,7 @@
 package com.phimy.view;
 
 import android.content.Intent;
-import android.media.AudioManager;
 import android.media.MediaPlayer;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -23,6 +21,7 @@ public class MediaActivity extends YouTubeBaseActivity implements YouTubePlayer.
     private SurfaceView surfaceView;
     private MediaPlayer mediaPlayer;
     private SurfaceHolder surfaceHolder;
+    public static final String KEY_MOVIEVID = "video";
 
     YouTubePlayerView youTubePlayerView;
     String claveYoutube = "AIzaSyAWSqt1Xz3k4omNxLxIB8z7U56fEoszdSY";
@@ -36,7 +35,7 @@ public class MediaActivity extends YouTubeBaseActivity implements YouTubePlayer.
         ThemeUtils.onActivityCreateSetTheme(this);
         setContentView(R.layout.activity_media);
 
-        youTubePlayerView= (YouTubePlayerView)findViewById(R.id.youtube_view);
+        youTubePlayerView= (YouTubePlayerView)findViewById(R.id.youtube_view_dos);
         youTubePlayerView.initialize(claveYoutube,this);
 
     }
