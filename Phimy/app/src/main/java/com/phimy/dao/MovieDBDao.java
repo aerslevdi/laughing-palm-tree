@@ -4,6 +4,8 @@ import com.phimy.model.Cast;
 import com.phimy.model.CastDBContainer;
 import com.phimy.model.MovieDB;
 import com.phimy.model.MovieDBContainer;
+import com.phimy.model.VideoDB;
+import com.phimy.model.VideoDBContainer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -79,6 +81,24 @@ public class MovieDBDao extends DaoHelper {
     }
 
     //TRAER CAST END
+
+    //TRAER VIDEO START
+
+    public void getVideo (final ResultListener<VideoDB> videoListener, Integer movie_id){
+        Call<VideoDB> videoCall = serviceMovies.getVideo(movie_id, api_key);
+        videoCall.enqueue(new Callback<VideoDB>() {
+            @Override
+            public void onResponse(Call<VideoDB> call, Response<VideoDB> response) {
+                VideoDB videoContainer = response.body();
+                videoListener.finish(videoContainer);
+            }
+
+            @Override
+            public void onFailure(Call<VideoDB> call, Throwable t) {
+
+            }
+        });
+    }
 
     public void getFavoritos(final ResultListener<List<MovieDB>> listenerDelController) {
         listenerDelController.finish(favoritosMovieDBS);

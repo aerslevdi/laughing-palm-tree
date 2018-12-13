@@ -3,7 +3,9 @@ package com.phimy.controller;
 import android.content.Context;
 
 import com.phimy.dao.MovieDBDao;
+import com.phimy.model.Cast;
 import com.phimy.model.MovieDB;
+import com.phimy.model.VideoDB;
 
 import java.util.List;
 
@@ -14,6 +16,7 @@ public class ControllerMovieDB {
     final static public Integer KEY_SEARCH_POPULAR_MOVIE = 0;
     final static public Integer KEY_SEARCH_POPULAR_TV = 1;
     final static public Integer KEY_SEARCH_NOW_PLAYING = 2;
+
     MovieDBDao movieDBDao = new MovieDBDao();
 
     private static ControllerMovieDB instance;
@@ -72,6 +75,34 @@ public class ControllerMovieDB {
             });
         }
     }
+
+    // CONTROLLER GETCAST START
+    public void getCast(Context context, final ResultListener<List<Cast>>viewListener, Integer movie_id){
+        if (InternetConnection.isConnection(context)){
+            movieDBDao.getCast(new ResultListener<List<Cast>>() {
+                @Override
+                public void finish(List<Cast> resultado) {
+                    viewListener.finish(resultado);
+
+                }
+            }, movie_id);
+        }
+    }
+    //CONTROLLER GETCAST END
+
+    //CONTROLLER GETVIDEO START
+    public void getVideoDB (Context context, final ResultListener<VideoDB> resultListener, Integer movie_id){
+        if (InternetConnection.isConnection(context)){
+            movieDBDao.getVideo(new ResultListener<VideoDB>() {
+                @Override
+                public void finish(VideoDB resultado) {
+                    resultListener.finish(resultado);
+                }
+            }, movie_id);
+        }
+    }
+
+    //CONTROLLER GETVIDEO END
 
     public void addFavoritos(MovieDB movieDB){
             movieDBDao.addFavoritos(movieDB);

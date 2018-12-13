@@ -61,6 +61,7 @@ public class InicioActivity extends AppCompatActivity {
         ActionBar actionbar = getSupportActionBar();
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeAsUpIndicator(R.drawable.ic_menu_black_24dp);
+        //TODO AGREGAR SEARCHABLE
 
         drawerLayout = findViewById(R.id.drawer);
         NavigationView navigationView = findViewById(R.id.navigation);

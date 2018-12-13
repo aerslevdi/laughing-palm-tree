@@ -6,9 +6,9 @@ import java.util.List;
 
 public class VideoDBContainer {
     @SerializedName("results")
-    private List<Video> videos;
+    private List<VideoDB> videoDBS;
 
-    public List<Video> getVideos() {
-        return videos;
+    public List<VideoDB> getVideoDBS() {
+        return videoDBS;
     }
 }

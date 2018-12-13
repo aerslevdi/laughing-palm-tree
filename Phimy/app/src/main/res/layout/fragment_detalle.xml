@@ -41,12 +41,12 @@
                         android:layout_height="250dp"
                         android:fitsSystemWindows="true" />
 
-                    <!--<ImageView
+                    <ImageView
                         android:id="@+id/imagenVideo"
                         android:fitsSystemWindows="true"
                         android:layout_width="match_parent"
                         android:layout_height="250dp"
-                        android:scaleType="centerCrop" />-->
+                        android:scaleType="centerCrop" />
 
                     <TextView
                         android:id="@+id/tituloPelicula"
@@ -157,11 +157,6 @@
                 android:layout_height="?android:attr/actionBarSize"
                 app:layout_collapseMode="pin"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
-
-                <ImageView
-                    android:id="@+id/favoritosLista"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
 
             </android.support.v7.widget.Toolbar>
 

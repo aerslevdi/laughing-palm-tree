@@ -1,6 +1,6 @@
 package com.phimy.model;
 
-public class Video {
+public class VideoDB {
     private String name;
     private String site;
 

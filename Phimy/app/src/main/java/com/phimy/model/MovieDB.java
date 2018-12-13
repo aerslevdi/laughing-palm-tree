@@ -11,6 +11,7 @@ public class MovieDB implements Serializable{
     private String overview;
     private String release_date;
     private Double popularity;
+    private Boolean video;
 
 
     public String getTitle() {
@@ -41,6 +42,8 @@ public class MovieDB implements Serializable{
         return popularity;
     }
 
+    public Boolean getVideo(){ return video;}
+
     @Override
     public String toString() {
         return "MovieDB{" +
@@ -48,6 +51,10 @@ public class MovieDB implements Serializable{
                 ", vote_count=" + vote_count +
                 ", id=" + id +
                 ", poster_path='" + poster_path + '\'' +
+                ", overview='" + overview + '\'' +
+                ", release_date='" + release_date + '\'' +
+                ", popularity=" + popularity +
+                ", video=" + video +
                 '}';
     }
 
