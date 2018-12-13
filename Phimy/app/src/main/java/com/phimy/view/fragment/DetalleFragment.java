@@ -85,7 +85,7 @@ public class DetalleFragment extends Fragment {
         controller.getCast(view.getContext(), new ResultListener<List<Cast>>() {
             @Override
             public void finish(List<Cast> resultado) {
-                casting = resultado;
+                actorAdapter.setCast(resultado);
 
             }
         }, movieDB.getId());

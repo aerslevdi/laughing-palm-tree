@@ -46,6 +46,11 @@ public class DetalleAdapter extends RecyclerView.Adapter<DetalleAdapter.DetalleA
         holder.cargar(cast);
     }
 
+    public void setCast (List<Cast> casting){
+        casts = casting;
+        notifyDataSetChanged();
+    }
+
     @Override
     public int getItemCount() {
         return casts.size();
