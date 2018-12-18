@@ -20,6 +20,7 @@ import com.phimy.R;
 import com.phimy.controller.ControllerMovieDB;
 import com.phimy.model.Cast;
 import com.phimy.model.MovieDB;
+import com.phimy.model.VideoDB;
 import com.phimy.view.adapter.DetalleAdapter;
 
 import java.util.ArrayList;
@@ -35,7 +36,6 @@ public class DetalleFragment extends Fragment {
     private String videoKey;
     private TextView tituloView;
     private TextView fechaView;
-    private TextView scoreView;
     private TextView metaView;
     private RecyclerView recyclerView;
     private ImageView trailerView;
@@ -44,8 +44,7 @@ public class DetalleFragment extends Fragment {
     private FloatingActionButton fab;
     private String path;
     private MovieDB movieDB;
-    private TextView verTrailer;
-    private Listener listener;
+    private ImageView verTrailer;
     private ControllerMovieDB controller = new ControllerMovieDB();
     private List<Cast> casting = new ArrayList<>();
 
@@ -103,14 +102,13 @@ public class DetalleFragment extends Fragment {
         tituloView = view.findViewById(R.id.tituloPelicula);
 
         fechaView = view.findViewById(R.id.fecha);
-        scoreView = view.findViewById(R.id.scoreNumero);
         metaView = view.findViewById(R.id.scoreMeta);
         recyclerView = view.findViewById(R.id.actoresRecycler);
         trailerView = view.findViewById(R.id.imagenVideo);
         shareMovie = view.findViewById(R.id.share);
         plot = view.findViewById(R.id.plot);
         fab = view.findViewById(R.id.fabButton);
-        verTrailer = view.findViewById(R.id.trailerButton);
+        verTrailer = view.findViewById(R.id.trailerImg);
 
 
         //SET DATA
@@ -119,7 +117,6 @@ public class DetalleFragment extends Fragment {
         tituloView.setText(movieDB.getTitle());
         Glide.with(this).load("http://image.tmdb.org/t/p/w185/" + path).into(trailerView);
         fechaView.setText(movieDB.getRelease_date());
-        scoreView.setText(movieDB.getPopularity().toString());
         metaView.setText(movieDB.getVote_count().toString());
 
         plot.setText(movieDB.getOverview());
@@ -130,10 +127,16 @@ public class DetalleFragment extends Fragment {
         shareMovie.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                controller.getVideoDB(getContext(), new ResultListener<VideoDB>() {
+                    @Override
+                    public void finish(VideoDB resultado) {
+                        videoKey = resultado.getKey();
+                    }
+                }, movieDB.getId());
                 Intent share = new Intent(android.content.Intent.ACTION_SEND);
                 share.setType("text/plain");
                 share.putExtra(Intent.EXTRA_SUBJECT, "Compartir en WhatsApp");
-                share.putExtra(Intent.EXTRA_TEXT, "Te recomiendo" + movieDB.getTitle() + "/n Enviado desde PHIM");
+                share.putExtra(Intent.EXTRA_TEXT, "Te recomiendo " + movieDB.getTitle()+". Mira el trailer! " +"https://www.youtube.com/watch?v="+ videoKey +" Enviado desde PHIM");
                 startActivity(Intent.createChooser(share, "Share link!"));
             }
         });
@@ -149,6 +152,7 @@ public class DetalleFragment extends Fragment {
                 } else {
                     favoritos.add(movieDB);
                 }
+
                 Snackbar.make(view, "La pelicula ha sido agregada a tu lista", Snackbar.LENGTH_LONG).setAction("Undo", new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -161,25 +165,21 @@ public class DetalleFragment extends Fragment {
 
 
         //TRAER VIDEO
-
-        verTrailer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               listener.send(movieDB);
-            }
-        });
-
-
-       /* controller.getVideoDB(view.getContext(), new ResultListener<VideoDB>() {
-              @Override
-              public void finish(VideoDB resultado) {
-                  videoKey = resultado.getKey();
-
-              }
-          }, movieDB.getId());
-      } else{
-          Glide.with(this).load("http://image.tmdb.org/t/p/w185/" + path).into(trailerView);
-      }*/
+        if (movieDB.getVideo()){
+            verTrailer.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    controller.getVideoDB(getContext(), new ResultListener<VideoDB>() {
+                        @Override
+                        public void finish(VideoDB resultado) {
+                            videoKey = resultado.getKey();
+                            DetalleFragment.VideoTrailer listenerTrailer = (DetalleFragment.VideoTrailer) getContext();
+                            listenerTrailer.recibirVideo(videoKey);
+                        }
+                    }, movieDB.getId());
+                }
+            });
+        }
 
 
 
@@ -187,8 +187,8 @@ public class DetalleFragment extends Fragment {
         return view;
     }
 
-    public interface Listener{
-        void send (MovieDB movieDB);
+    public interface VideoTrailer{
+        void recibirVideo(String key);
     }
 
 

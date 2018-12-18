@@ -33,6 +33,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="300dp"
                     android:fitsSystemWindows="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
                     android:orientation="horizontal">
 
                     <ImageView
@@ -42,14 +44,6 @@
                         android:layout_height="250dp"
                         android:scaleType="centerCrop" />
 
-                    <TextView
-                        android:id="@+id/tituloPelicula"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="250dp"
-                        android:textColor="#000000"
-                        android:textSize="30sp" />
-
                 </LinearLayout>
 
                 <RelativeLayout
@@ -57,6 +51,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/linearBar">
+
+
+                    <TextView
+                        android:id="@+id/tituloPelicula"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@id/trailerButton"
+                        android:textColor="#000000"
+                        android:textSize="30sp" />
 
                     <TextView
                         android:id="@+id/trailerButton"
@@ -71,6 +74,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="8dp"
                         android:layout_toRightOf="@id/trailerButton"
+                        android:layout_alignParentTop="true"
                         android:textSize="15sp" />
 
                     <TextView
@@ -81,20 +85,21 @@
                         android:textSize="15sp" />
 
                     <ImageView
-                        android:id="@+id/scoreImg"
+                        android:id="@+id/trailerImg"
                         android:layout_width="130dp"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/trailerButton"
                         android:layout_marginTop="15dp"
-                        android:src="@drawable/ic_star_border_black_24dp" />
+                        android:src="@drawable/ic_play_circle_outline_black_24dp" />
 
                     <TextView
                         android:id="@+id/scoreNumero"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/scoreImg"
-                        android:layout_alignLeft="@id/scoreImg"
-                        android:layout_alignRight="@id/scoreImg"
+                        android:layout_below="@id/trailerImg"
+                        android:text="@string/verTrailer"
+                        android:layout_alignLeft="@id/trailerImg"
+                        android:layout_alignRight="@id/trailerImg"
                         android:textAlignment="center" />
 
                     <ImageView
@@ -103,14 +108,14 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/duracion"
                         android:layout_marginTop="15dp"
-                        android:layout_toRightOf="@id/scoreImg"
+                        android:layout_toRightOf="@id/trailerImg"
                         android:src="@drawable/ic_thumbs_up_down_black_24dp" />
 
                     <TextView
                         android:id="@+id/scoreMeta"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/scoreImg"
+                        android:layout_below="@id/trailerImg"
                         android:layout_alignLeft="@id/metaImg"
                         android:layout_alignRight="@id/metaImg"
                         android:textAlignment="center" />
@@ -128,7 +133,7 @@
                         android:id="@+id/shareDetalle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/scoreImg"
+                        android:layout_below="@id/trailerImg"
                         android:layout_alignLeft="@id/share"
                         android:layout_alignRight="@id/share"
                         android:text="@string/shareString"

@@ -30,7 +30,7 @@ import java.util.ListIterator;
 
 import Utils.ResultListener;
 
-public class MovieDetalleActivity extends AppCompatActivity implements DetalleFragment.Listener {
+public class MovieDetalleActivity extends AppCompatActivity implements DetalleFragment.VideoTrailer {
     public static final String KEY_MOVIEDB = "movieDB";
     public static final String KEY_POS = "position";
     public static final String KEY_NAMEFRAG = "name";
@@ -120,11 +120,12 @@ public class MovieDetalleActivity extends AppCompatActivity implements DetalleFr
     }
 
     @Override
-    public void send(MovieDB movieDB) {
+    public void recibirVideo(String key) {
         Intent intent = new Intent(MovieDetalleActivity.this, MediaActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putSerializable(MediaActivity.KEY_MOVIEVID, movieDB);
+        bundle.putString(MediaActivity.KEY_MOVIEVID, key);
         intent.putExtras(bundle);
         startActivity(intent);
+
     }
 }
